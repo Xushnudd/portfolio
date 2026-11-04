@@ -36,7 +36,14 @@ const data: PortfolioData = {
 
 export default function Header() {
   return (
-    <header className="bg-slate-950/70">
+    <header
+      className="
+        w-full
+        sticky top-0 z-50
+        bg-slate-950/70
+        border-b border-gray-900
+        "
+      >
       <div
         className="
           w-full

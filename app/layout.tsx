@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./_components/Header";
+import BgGrid from "./_components/BgGrid";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -12,11 +13,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en">
       <body
         className="
+          relative
+          bg-slate-900
+          text-amber-50
           selection:bg-green-600
-          selection:text-black"
+          selection:text-black
+        "
       >
-        <Header />
-        {children}
+        <BgGrid />
+        <div className="relative">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );
