@@ -36,6 +36,7 @@ export default function Nav() {
                 py-1 px-4
                 rounded-md
                 cursor-pointer
+                duration-500
                 ${
                   pathname === el.link
                   ? "py-2 px-6 bg-green-700 text-gray-800"
