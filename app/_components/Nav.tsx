@@ -50,7 +50,8 @@ export default function Nav() {
       </div>
       <div
         className="
-          py-2 px-6 bg-green-700
+          py-2 px-6 rounded-md
+          bg-green-700
           text-gray-800 text-lg
           cursor-pointer duration-300
           active:scale-95
