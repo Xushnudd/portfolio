@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FiMenu } from "react-icons/fi";
 
 interface Button {
   name: string;
@@ -21,31 +22,43 @@ export default function Nav() {
     <nav
       className="
         w-max p-1
-        flex items-center gap-1
         bg-slate-950/60 text-amber-50
         rounded-md
       "
     >
-      {buttons.map((el) => (
-        <Link
-          key={el.link}
-          href={el.link}
-          className={
-            `
-              py-1 px-4
-              rounded-md
-              cursor-pointer
-              ${
-                pathname === el.link
-                ? "py-2 px-6 bg-green-700 text-gray-800"
-                : "hover:bg-gray-600"
-              }
-            `
-          }
-        >
-          {el.name}
-        </Link>
-      ))}
+      <div className="md:flex items-center gap-1 hidden">
+        {buttons.map((el) => (
+          <Link
+            key={el.link}
+            href={el.link}
+            className={
+              `
+                py-1 px-4
+                rounded-md
+                cursor-pointer
+                ${
+                  pathname === el.link
+                  ? "py-2 px-6 bg-green-700 text-gray-800"
+                  : "hover:bg-gray-600"
+                }
+              `
+            }
+          >
+            {el.name}
+          </Link>
+        ))}
+      </div>
+      <div
+        className="
+          py-2 px-6 bg-green-700
+          text-gray-800 text-lg
+          cursor-pointer duration-300
+          active:scale-95
+          block md:hidden
+        "
+      >
+        <FiMenu />
+      </div>
     </nav>
   )
 }
