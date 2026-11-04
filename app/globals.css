@@ -10,16 +10,3 @@ main {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 4rem 4rem;
 }
-
-.animate-slow-blink {
-  @apply animate-ping;
-}
-
-@keyframes slow-blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
