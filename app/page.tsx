@@ -444,20 +444,29 @@ function Terminal() {
             {/* Helped AI */}
             <div
               className="
-                my-5 w-full bg-slate-900 p-5
+                my-5 w-full bg-slate-900 p-2
                 border border-gray-800 rounded-md
                 flex items-center justify-between
                 text-white text-sm
               "
             >
               <div>
-                <p className="text-xs tracking-wider text-gray-400 font-mono">COMMITS VELOCITY</p>
-                <h2 className="text-3xl font-bold mt-1">99.8%</h2>
+                <p
+                  className="
+                    text-xs tracking-wider
+                    text-gray-400 font-mono
+                  "
+                >
+                  COMMITS VELOCITY
+                </p>
+                <h2 className="text-2xl font-bold mt-1">99.8%</h2>
               </div>
               <div className="w-32 h-12">
-                <svg viewBox="0 0 120 40" className="w-full h-full overflow-visible">
+                <svg
+                  viewBox="0 0 120 40"
+                  className="w-full h-full overflow-visible"
+                >
                   <defs>
-                    {/* Grafik ostidagi yashil rangli soyali gradient */}
                     <linearGradient id="greenGradient" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
                       <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
