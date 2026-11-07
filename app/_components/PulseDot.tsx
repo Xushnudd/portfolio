@@ -20,7 +20,7 @@ export default function PulseDot({ size, color }: PulseDotData) {
           opacity-75 ${color}
         `}
       />
-      <Circle size={10} color={color} />
+      <Circle size={size} color={color} />
     </span>
   )
 }
