@@ -40,6 +40,7 @@ interface terminalTitleBarNameData {
   icon: ReactNode;
   text: string;
 }
+
 interface terminalTitleBarData {
   buttons: string[];
   name: terminalTitleBarNameData;
@@ -129,6 +130,7 @@ function Banner() {
       <div className="text-5xl font-bold">
         {banner.title.map((el: string, i: number) => (
           <span
+            key={i}
             className={
               `${
                   i == 0
