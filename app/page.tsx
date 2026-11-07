@@ -86,7 +86,7 @@ const system_log: SystemLogData = {
 
 const buttons: ButtonData[] = [
   {"logo": <LuFolderCode />, "name": "Explore repositories", "link": "/repositories"},
-  {"logo": <MdCellTower />, "name": "Explore repositories", "link": "/repositories"}
+  {"logo": <MdCellTower />, "name": "Direct Transmission", "link": "/repositories"}
 ]
 
 const terminal: terminalData = {
@@ -262,15 +262,19 @@ function Buttons() {
           className={
             `
               py-3 px-7 rounded-md
+              flex items-center gap-2
+              uppercase text-sm
+              duration-500
               ${
                 i == 0
-                ? "bg-emerald-500"
-                : "bg-slate-800"
+                ? "bg-emerald-500 text-black hover:bg-emerald-300 hover:shadow-emerald-300 hover:shadow-[0_0_20px]"
+                : "bg-slate-800 text-white hover:text-blue-300 hover:bg-slate-600"
               }
             `
           }
         >
-          {el.name}
+          <span>{el.logo}</span>
+          <span>{el.name}</span>
         </button>
       ))}
     </div>
