@@ -4,25 +4,7 @@ import { MdCellTower } from "react-icons/md";
 import PulseDot from "./_components/PulseDot";
 import { ReactNode } from "react";
 import Circle from "./_components/Circle";
-import { metadata } from "./layout";
-
-const data = {
-  "buttons": [
-    {"logo": <LuFolderCode />, "name": "Explore repositories", "link": "/repositories"},
-    {"logo": <MdCellTower />, "name": "Explore repositories", "link": "/repositories"}
-  ],
-  "terminal": {
-    "titlebar": {
-      "buttons": ["pink", "chocolate", "green"],
-      "name": {"icon": <FiTerminal />, "text": "zsh — node xushnud.runtime.ts"},
-      "status": "200 OK"
-    },
-    "runtime": {
-      "commant": {"icon": "$", "text": "npx tsx runtime/profile.ts --inspect"},
-      "constanta": "develop"
-    }
-  }
-}
+import { FaDollarSign } from "react-icons/fa";
 
 interface BannerData {
   title: string[];
@@ -46,6 +28,32 @@ interface SystemLogData {
   status: string;
   sections: (string | string[])[];
   metadata: MetaData;
+}
+
+interface ButtonData {
+  logo: ReactNode;
+  name: string;
+  link: string;
+}
+
+interface terminalTitleBarNameData {
+  icon: ReactNode;
+  text: string;
+}
+interface terminalTitleBarData {
+  buttons: string[];
+  name: terminalTitleBarNameData;
+  status: string;
+}
+
+interface terminalRuntimeData {
+  command: terminalTitleBarNameData;
+  constanta: string;
+}
+
+interface terminalData {
+  titlebar: terminalTitleBarData;
+  runtime: terminalRuntimeData
 }
 
 const banner: BannerData = {
@@ -72,6 +80,23 @@ const system_log: SystemLogData = {
     "focus": ["REACT", "FASTAPI", "TS"],
     "base": "TASHKENT (UTC+5)",
     "compilation": "ZERO ERROR TOLERANCE"
+  }
+}
+
+const buttons: ButtonData[] = [
+  {"logo": <LuFolderCode />, "name": "Explore repositories", "link": "/repositories"},
+  {"logo": <MdCellTower />, "name": "Explore repositories", "link": "/repositories"}
+]
+
+const terminal: terminalData = {
+  "titlebar": {
+    "buttons": ["pink", "chocolate", "green"],
+    "name": {"icon": <FiTerminal />, "text": "zsh — node xushnud.runtime.ts"},
+    "status": "200 OK"
+  },
+  "runtime": {
+    "command": {"icon": <FaDollarSign />, "text": "npx tsx runtime/profile.ts --inspect"},
+    "constanta": "develop"
   }
 }
 
