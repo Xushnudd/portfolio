@@ -159,7 +159,7 @@ function SystemLog() {
     <div
       className="
         w-full p-5 rounded-md
-        bg-slate-900
+        bg-slate-800
         relative overflow-hidden
         group
       "
@@ -174,7 +174,7 @@ function SystemLog() {
         "
       />
       <div>
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-3">
           <div
             className="
               w-max
@@ -281,19 +281,29 @@ function Buttons() {
   )
 }
 
-export default function Home() {
+function Terminal() {
   return (
-    <main className="p-3">
-      <div
-        className="
-          py-10
-          flex flex-col gap-10
-        "
-      >
+    <div></div>
+  )
+}
+
+export default function Home() {
+  const style = "flex-1 py-10 flex flex-col gap-10"
+  return (
+    <main
+      className="
+        w-full p-3
+        lg:flex justify-between gap-10
+      "
+    >
+      <div className={style}>
         <Info />
         <Banner />
         <SystemLog />
         <Buttons />
+      </div>
+      <div className={style}>
+        <Terminal />
       </div>
     </main>
   );
