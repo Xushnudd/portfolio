@@ -504,13 +504,13 @@ export default function Home() {
         lg:flex justify-between gap-10
       "
     >
-      <div className={style}>
+      <div className="lg:w-6/10 w-full py-10 flex flex-col gap-10">
         <Info />
         <Banner />
         <SystemLog />
         <Buttons />
       </div>
-      <div className={style}>
+      <div className="lg:w-4/10 w-full py-10 flex flex-col gap-10">
         <Terminal />
       </div>
     </main>
