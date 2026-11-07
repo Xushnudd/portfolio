@@ -16,7 +16,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           relative
           bg-slate-900
           text-amber-50
-          selection:bg-green-600
+          selection:bg-emerald-400
           selection:text-black
         "
       >

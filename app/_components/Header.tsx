@@ -77,14 +77,14 @@ export default function Header() {
             text-white text-lg
             font-bold
             cursor-pointer
-            hover:text-green-600
+            hover:text-emerald-400
           "
           >
             {data.brand.map((el, i) => (
               <span
                 key={i}
                 className={
-                  `${i == 1 ? "text-green-600" : ""}`
+                  `${i == 1 ? "text-emerald-400" : ""}`
                 }
               >
                 {el}
@@ -110,13 +110,13 @@ export default function Header() {
           className="
           px-2 py-0.5 rounded-md
           bg-slate-950/60
-          border border-green-950
+          border border-emerald-950
           hidden xl:block
         "
         >
           <div className="flex items-center gap-2">
-            <PulseDot size={10} color="bg-green-600" />
-            <span className="text-green-500">
+            <PulseDot size={10} color="bg-emerald-400" />
+            <span className="text-emerald-400">
               {data.action}
             </span>
           </div>
@@ -148,8 +148,8 @@ export default function Header() {
                   py-1 px-4 rounded-md
                   flex justify-center items-center gap-0.5
                   ${i == 1
-                  ? "bg-green-600"
-                  : "bg-gray-600 hover:bg-gray-500 hover:text-green-600"
+                  ? "bg-emerald-500 text-black"
+                  : "bg-gray-600 hover:bg-gray-500 hover:text-emerald-400"
                 }
                 `
               }

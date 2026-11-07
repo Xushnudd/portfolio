@@ -39,7 +39,7 @@ export default function Nav() {
                 duration-500
                 ${
                   pathname === el.link
-                  ? "py-2 px-6 bg-green-700 text-gray-800"
+                  ? "py-2 px-6 bg-emerald-500 text-gray-800"
                   : "hover:bg-gray-600"
                 }
               `
@@ -52,7 +52,7 @@ export default function Nav() {
       <div
         className="
           py-2 px-6 rounded-md
-          bg-green-700
+          bg-emerald-500
           text-gray-800 text-lg
           cursor-pointer duration-300
           active:scale-95

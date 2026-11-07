@@ -110,8 +110,8 @@ function Info() {
         flex items-center justify-center gap-2
       "
     >
-      <PulseDot size={10} color="bg-green-600" />
-      <span className="text-green-600">AVAILABLE FOR ROLES & CONTRACTS</span>
+      <PulseDot size={10} color="bg-emerald-500" />
+      <span className="text-emerald-500">AVAILABLE FOR ROLES & CONTRACTS</span>
       <span
         className="
           text-[8px] tracking-[3px] py-0.5 px-1
@@ -135,7 +135,7 @@ function Banner() {
               `${
                   i == 0
                     ? "text-white"
-                    : "text-green-600"
+                    : "text-emerald-500"
                 }
               `
             }
@@ -158,7 +158,7 @@ function SystemLog() {
   return (
     <div
       className="
-        w-full p-5 rounded-sm
+        w-full p-5 rounded-md
         bg-slate-900
         relative overflow-hidden
         group
@@ -182,11 +182,11 @@ function SystemLog() {
               text-white
             "
           >
-            <span className="text-green-600">{system_log.command.icon}</span>
+            <span className="text-emerald-500">{system_log.command.icon}</span>
             <span className="-mt-1">{system_log.command.text}</span>
           </div>
           <div className="flex items-center gap-1">
-            <PulseDot size={10} color="bg-green-600" />
+            <PulseDot size={10} color="bg-emerald-500" />
             <span className="text-xs -mt-0.5">
               {system_log.status}
             </span>
@@ -253,6 +253,30 @@ function SystemLog() {
   )
 }
 
+function Buttons() {
+  return (
+    <div className="flex gap-5">
+      {buttons.map((el, i) => (
+        <button
+          key={el.link}
+          className={
+            `
+              py-3 px-7 rounded-md
+              ${
+                i == 0
+                ? "bg-emerald-500"
+                : "bg-slate-800"
+              }
+            `
+          }
+        >
+          {el.name}
+        </button>
+      ))}
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <main className="p-3">
@@ -265,6 +289,7 @@ export default function Home() {
         <Info />
         <Banner />
         <SystemLog />
+        <Buttons />
       </div>
     </main>
   );
