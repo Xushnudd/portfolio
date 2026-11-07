@@ -238,12 +238,12 @@ function SystemLog() {
             ))}
           </div>
           <div className="flex items-center gap-1">
-            <Circle size={8} color="bg-blue-300" />
+            <Circle size={8} color="bg-red-200" />
             <span className="mr-3">BASE: </span>
             {system_log.metadata.base}
           </div>
           <div className="flex items-center gap-1">
-            <Circle size={8} color="bg-blue-300" />
+            <Circle size={8} color="bg-emerald-500" />
             <span className="mr-3">COMPILATION: </span>
             {system_log.metadata.compilation}
           </div>
