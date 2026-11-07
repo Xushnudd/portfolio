@@ -5,6 +5,7 @@ import PulseDot from "./_components/PulseDot";
 import { ReactNode } from "react";
 import Circle from "./_components/Circle";
 import { FaDollarSign } from "react-icons/fa";
+import Link from "next/link";
 
 interface BannerData {
   title: string[];
@@ -85,8 +86,8 @@ const system_log: SystemLogData = {
 }
 
 const buttons: ButtonData[] = [
-  {"logo": <LuFolderCode />, "name": "Explore repositories", "link": "/repositories"},
-  {"logo": <MdCellTower />, "name": "Direct Transmission", "link": "/repositories"}
+  {"logo": <LuFolderCode />, "name": "Explore repositories", "link": "/repository"},
+  {"logo": <MdCellTower />, "name": "Direct Transmission", "link": "/contact"}
 ]
 
 const terminal: terminalData = {
@@ -257,7 +258,8 @@ function Buttons() {
   return (
     <div className="flex gap-5">
       {buttons.map((el, i) => (
-        <button
+        <Link
+          href={el.link}
           key={el.link}
           className={
             `
@@ -275,7 +277,7 @@ function Buttons() {
         >
           <span>{el.logo}</span>
           <span>{el.name}</span>
-        </button>
+        </Link>
       ))}
     </div>
   )
