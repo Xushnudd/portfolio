@@ -4,7 +4,7 @@ import { MdCellTower } from "react-icons/md";
 import PulseDot from "./_components/PulseDot";
 import { ReactNode } from "react";
 import Circle from "./_components/Circle";
-import { FaDollarSign } from "react-icons/fa";
+import { FaDollarSign, FaRegCheckCircle } from "react-icons/fa";
 import Link from "next/link";
 
 interface BannerData {
@@ -50,7 +50,8 @@ interface terminalTitleBarData {
 
 interface terminalRuntimeData {
   command: terminalTitleBarNameData;
-  constanta: string;
+  focus: string[];
+  location: string;
 }
 
 interface terminalData {
@@ -92,13 +93,14 @@ const buttons: ButtonData[] = [
 
 const terminal: terminalData = {
   "titlebar": {
-    "buttons": ["pink", "chocolate", "green"],
+    "buttons": ["bg-red-200", "bg-orange-300", "bg-emerald-500"],
     "name": {"icon": <FiTerminal />, "text": "zsh — node xushnud.runtime.ts"},
     "status": "200 OK"
   },
   "runtime": {
     "command": {"icon": <FaDollarSign />, "text": "npx tsx runtime/profile.ts --inspect"},
-    "constanta": "develop"
+    "focus": ["TypeScript", "React", "Python", "FastAPI"],
+    "location": "Tashkent, UZ"
   }
 }
 
@@ -285,7 +287,202 @@ function Buttons() {
 
 function Terminal() {
   return (
-    <div></div>
+    <div>
+      <div
+        className="
+          w-full p-3 rounded-t-md
+        bg-slate-800
+          flex justify-between items-center
+          text-sm
+        "
+      >
+        <div className="flex gap-2">
+          {terminal.titlebar.buttons.map((el, i) => (
+            <Circle key={i} size={13} color={el} />
+          ))}
+        </div>
+        <div className="flex gap-1 items-center text-slate-400">
+          <span>{terminal.titlebar.name.icon}</span>
+          <span className="-mt-1 text-xs">{terminal.titlebar.name.text}</span>
+        </div>
+        <div className="text-emerald-400 font-bold">
+          <span className="text-xs">{terminal.titlebar.status}</span>
+        </div>
+      </div>
+      <div
+        className="
+          w-full p-3 rounded-b-md
+          bg-slate-950
+        "
+      >
+        <div
+          className="
+            flex items-center gap-1.5
+            text-sm
+          "
+        >
+          <span className="text-blue-400">
+            {terminal.runtime.command.icon}
+          </span>
+          <span className="-mt-1 text-slate-400">
+            {terminal.runtime.command.text}
+          </span>
+        </div>
+        <div
+          className="
+            mt-5
+          "
+        >
+          <div>
+            <div
+              className="
+                w-full
+                flex gap-2
+              "
+            >
+              <span className="text-violet-400">const</span>
+              <span className="text-blue-400">developer</span>
+              <span className="text-white">=</span>
+              <span className="text-violet-400">await</span>
+              <div>
+                <span className="text-white">Xushnud.</span>
+                <span className="text-emerald-300">resolve</span>
+                <span>&#40;&#123;</span>
+              </div>
+            </div>
+            <div
+              className="
+                w-full ml-4
+                flex flex-col
+              "
+            >
+              <div className="flex gap-2">
+                <span className="text-white">status:</span>
+                <div>
+                  <span className="text-emerald-300">"coding"</span>
+                  <span>,</span>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <span className="text-white">focus:</span>
+                <div>
+                  [
+                    {terminal.runtime.focus.map((el, i) => (
+                      <span key={i}>
+                        <span className="text-blue-400">"{el}"</span>
+                        <span
+                          className={
+                            `
+                            ${
+                              terminal.runtime.focus.length-1 != i
+                              ? "inline-block"
+                              : "hidden"
+                            }
+                            `
+                          }
+                        >
+                          ,&nbsp;&nbsp;
+                        </span>
+                      </span>
+                    ))}
+                  ],
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <span className="text-white">location:</span>
+                <div>
+                  <span className="text-blue-400">"{terminal.runtime.location}"</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className="
+                w-full
+                flex gap-2
+              "
+            >
+              <span>&#41;&#125;</span>
+            </div>
+          </div>
+          <hr
+            className="
+              my-5 w-full
+              text-slate-600
+            "
+          />
+          <div>
+            <div
+              className="
+                flex items-center gap-2
+                text-emerald-300
+              "
+            >
+              <FaRegCheckCircle />
+              <span
+                className="
+                  -mt-1.5
+                  flex items-center gap-2
+                "
+              >[RESOLVED] Developer Instance: Xushnud Nishonov</span>
+            </div>
+            <div className="ml-6">
+              <div className="flex flex-col">
+                <span className="text-xs my-1">Engine: V8 x64 | Latency: 1.4ms | Mode: Continuous Improvement</span>
+                <span>
+                  <span>Output stream ready </span>
+                  <span
+                    className="
+                      -mb-0.5 ml-1 w-2 h-4
+                      bg-emerald-400
+                      inline-block animate-pulse
+                    "
+                  />
+                </span>
+              </div>
+            </div>
+
+            {/* Helped AI */}
+            <div
+              className="
+                my-5 w-full bg-slate-900 p-5
+                border border-gray-800 rounded-md
+                flex items-center justify-between
+                text-white text-sm
+              "
+            >
+              <div>
+                <p className="text-xs tracking-wider text-gray-400 font-mono">COMMITS VELOCITY</p>
+                <h2 className="text-3xl font-bold mt-1">99.8%</h2>
+              </div>
+              <div className="w-32 h-12">
+                <svg viewBox="0 0 120 40" className="w-full h-full overflow-visible">
+                  <defs>
+                    {/* Grafik ostidagi yashil rangli soyali gradient */}
+                    <linearGradient id="greenGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
+                      <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M 0 30 L 15 25 L 30 28 L 45 33 L 60 20 L 75 24 L 90 18 L 105 22 L 120 10 L 120 40 L 0 40 Z"
+                    fill="url(#greenGradient)"
+                  />
+                  <path
+                    d="M 0 30 L 15 25 L 30 28 L 45 33 L 60 20 L 75 24 L 90 18 L 105 22 L 120 10"
+                    fill="none"
+                    stroke="#10b981"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+            {/* Helped AI */}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
