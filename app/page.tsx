@@ -359,7 +359,7 @@ function Terminal() {
               <div className="flex gap-2">
                 <span className="text-white">status:</span>
                 <div>
-                  <span className="text-emerald-300">"coding"</span>
+                  <span className="text-emerald-300">&quot;coding&quot;</span>
                   <span>,</span>
                 </div>
               </div>
@@ -369,7 +369,7 @@ function Terminal() {
                   [
                     {terminal.runtime.focus.map((el, i) => (
                       <span key={i}>
-                        <span className="text-blue-400">"{el}"</span>
+                        <span className="text-blue-400">&quot;{el}&quot;</span>
                         <span
                           className={
                             `
@@ -391,7 +391,7 @@ function Terminal() {
               <div className="flex gap-2">
                 <span className="text-white">location:</span>
                 <div>
-                  <span className="text-blue-400">"{terminal.runtime.location}"</span>
+                  <span className="text-blue-400">&quot;{terminal.runtime.location}&quot;</span>
                 </div>
               </div>
             </div>
@@ -496,7 +496,7 @@ function Terminal() {
 }
 
 export default function Home() {
-  const style = "flex-1 py-10 flex flex-col gap-10"
+  const style = "w-full py-10 flex flex-col gap-10";
   return (
     <main
       className="
@@ -504,13 +504,13 @@ export default function Home() {
         lg:flex justify-between gap-10
       "
     >
-      <div className="lg:w-6/10 w-full py-10 flex flex-col gap-10">
+      <div className={`lg:w-6/10 ${style}`}>
         <Info />
         <Banner />
         <SystemLog />
         <Buttons />
       </div>
-      <div className="lg:w-4/10 w-full py-10 flex flex-col gap-10">
+      <div className={`lg:w-4/10 ${style}`}>
         <Terminal />
       </div>
     </main>
