@@ -1,6 +1,6 @@
 import { FiTerminal } from "react-icons/fi";
 import { LuFolderCode } from "react-icons/lu";
-import { MdCellTower } from "react-icons/md";
+import { MdCellTower, MdSensors } from "react-icons/md";
 import PulseDot from "./_components/PulseDot";
 import { ReactNode } from "react";
 import Circle from "./_components/Circle";
@@ -59,6 +59,28 @@ interface terminalData {
   runtime: terminalRuntimeData
 }
 
+interface BannerFooterTitleData {
+  icon: ReactNode;
+  name: string;
+}
+
+interface BannerFooterDatasData {
+  name: string;
+  data: string;
+}
+
+interface BannerFooterSystemData {
+  icon: ReactNode;
+  name: string;
+  data: string;
+}
+
+interface BannerFooterData {
+  title: BannerFooterTitleData;
+  datas: BannerFooterDatasData[];
+  system: BannerFooterSystemData[];
+}
+
 const banner_title: BannerData = {
   "title": ["Hi! I'm ", "Xushnud 👋"],
   "subtitle": "Aspiring Full-Stack Developer & Software Craftsman",
@@ -102,6 +124,26 @@ const terminal: terminalData = {
     "focus": ["TypeScript", "React", "Python", "FastAPI"],
     "location": "Tashkent, UZ"
   }
+}
+
+const banner_footer: BannerFooterData = {
+  "title": {"icon": <MdSensors />, "name": "SYSTEM TELEMETRY"},
+  "datas": [
+    {"name": "PIPELINE", "data": "CI/CD INTEGRATED"},
+    {"name": "PARADIGM", "data": "EVENT-DRIVEN & REACTIVE"}
+  ],
+  "system": [
+    {
+      "icon": <Circle size={3} color="bg-emerald-400" />,
+      "name": "NODE ENGINE",
+      "data": "22.x LTS"
+    },
+    {
+      "icon": <Circle size={3} color="bg-blue-400" />,
+      "name": "TEST COVERAGE",
+      "data": "STRICT"
+    }
+  ]
 }
 
 function Info() {
@@ -495,13 +537,19 @@ function Terminal() {
   )
 }
 
+function BannerFooter() {
+  return (
+    <div></div>
+  )
+}
+
 function Banner() {
   const style = "w-full py-10 flex flex-col gap-10";
   return (
     <div>
       <div
         className="
-          w-full p-3
+          w-full
           lg:flex justify-between gap-10
         "
       >
@@ -515,13 +563,16 @@ function Banner() {
           <Terminal />
         </div>
       </div>
+      <div>
+        <BannerFooter />
+      </div>
     </div>
   )
 }
 
 export default function Home() {
   return (
-    <main>
+    <main className="w-full p-3">
       <Banner />
     </main>
   );
