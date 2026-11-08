@@ -10,6 +10,7 @@ import { GoRocket } from "react-icons/go";
 import { HiOutlineLightningBolt } from "react-icons/hi";
 import { IoCodeSharp } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
+import Rectangle from "./_components/Rectangle";
 
 interface BannerData {
   title: string | string[];
@@ -807,7 +808,7 @@ function AboutTitle() {
     <div className="my-10">
       <div className="w-2/3">
         <div className="flex items-center gap-2 text-xs">
-          <div className="w-2.5 h-2.5 bg-emerald-400"></div>
+          <Rectangle size={10} color="bg-emerald-400" />
           <span className="text-emerald-400">{about_data.subtitle}</span>
         </div>
         <h2 className="my-2 text-4xl text-white font-bold">{about_data.title}</h2>
