@@ -782,7 +782,7 @@ function Banner() {
   )
 }
 
-function About() {
+function AboutTitle() {
   const colors = [
     {
       "text": "text-emerald-400",
@@ -887,6 +887,100 @@ function About() {
           </div>
         ))}
       </div>
+    </div>
+  )
+}
+
+// Helped AI
+function RuntimeMetricsCard() {
+  return (
+    <div className="w-full max-w-2xl bg-[#0b1015] border border-gray-800 rounded-lg p-5 text-[#34d399] font-mono text-xs select-none">
+      <div className="flex items-center justify-between mb-4 tracking-wider">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-emerald-400 font-semibold">
+            RUNTIME METRICS: LOCALHOST:3000
+          </span>
+        </div>
+        <span className="text-gray-400">ACTIVE DAEMON</span>
+      </div>
+      <div className="w-full h-24 my-2">
+        <svg
+          viewBox="0 0 600 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-full overflow-visible"
+        >
+          <path
+            d="M 0 55 C 100 85, 200 85, 300 50 C 400 15, 500 70, 600 45"
+            stroke="#38bdf8"
+            strokeWidth="1.5"
+            strokeOpacity="0.7"
+          />
+          <path
+            d="M 0 50 C 70 60, 150 25, 240 40 C 330 65, 360 95, 420 15 M 535 15 C 570 50, 595 50, 600 45"
+            stroke="#a78bfa"
+            strokeWidth="1.5"
+            strokeOpacity="0.6"
+          />
+          <path
+            d="M 0 52 C 80 20, 150 30, 220 70 C 290 90, 360 25, 450 30 C 530 40, 570 70, 600 50"
+            stroke="#34d399"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
+      <div className="flex items-center justify-between text-gray-400 pt-2 tracking-wider">
+        <span>MEM: 142MB / 16GB</span>
+        <span>BUILD TIME: 382ms</span>
+        <span className="text-emerald-400">ALL PASSING (34/34)</span>
+      </div>
+    </div>
+  );
+}
+// Helped AI
+
+function Workspace() {
+  return (
+    <div
+      className="
+        w-full h-auto p-10
+        bg-slate-950 rounded-lg
+        flex justify-between gap-5 flex-wrap
+      "
+      >
+      <div className="lg:w-2/5 flex flex-col gap-3">
+        <span className="text-sm text-emerald-400">{about_data.workspace.subtitle}</span>
+        <h2 className="text-2xl text-white">{about_data.workspace.title}</h2>
+        <p>{about_data.workspace.text}</p>
+        <div className="flex gap-2 flex-wrap">
+          {(Array.isArray(about_data.workspace.footer)
+            ? about_data.workspace.footer
+            : [about_data.workspace.footer]
+          ).map((el, i) => (
+            <div
+              key={i}
+              className="
+                w-max px-2 py-0.5 rounded-sm
+                bg-slate-800 text-white
+              "
+              >
+              {el}
+            </div>
+          ))}
+        </div>
+      </div>
+      <RuntimeMetricsCard />
+    </div>
+  )
+}
+
+function About() {
+  return (
+    <div>
+      <AboutTitle />
+      <Workspace />
     </div>
   )
 }
