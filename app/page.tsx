@@ -894,7 +894,7 @@ function AboutTitle() {
 // Helped AI
 function RuntimeMetricsCard() {
   return (
-    <div className="w-full max-w-2xl bg-[#0b1015] border border-gray-800 rounded-lg p-5 text-[#34d399] font-mono text-xs select-none">
+    <div className="w-full h-max max-w-2xl bg-[#0b1015] border border-gray-800 rounded-lg p-5 text-[#34d399] font-mono text-xs select-none">
       <div className="flex items-center justify-between mb-4 tracking-wider">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
