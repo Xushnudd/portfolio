@@ -1,11 +1,13 @@
 import { FiTerminal } from "react-icons/fi";
 import { LuFolderCode } from "react-icons/lu";
-import { MdCellTower, MdSensors } from "react-icons/md";
+import { MdCellTower, MdOutlineLayers, MdOutlineVerified, MdSensors } from "react-icons/md";
 import PulseDot from "./_components/PulseDot";
 import { ReactNode } from "react";
 import Circle from "./_components/Circle";
 import { FaDollarSign, FaRegCheckCircle } from "react-icons/fa";
 import Link from "next/link";
+import { GoRocket } from "react-icons/go";
+import { HiOutlineLightningBolt } from "react-icons/hi";
 
 interface BannerData {
   title: string[];
@@ -81,6 +83,18 @@ interface BannerFooterData {
   system: BannerFooterSystemData[];
 }
 
+interface StatisticStyleData {
+  name: ReactNode | string;
+  color: string;
+}
+
+interface StatisticData {
+  title: string;
+  icon: StatisticStyleData;
+  data: string;
+  caption: StatisticStyleData;
+}
+
 const banner_title: BannerData = {
   "title": ["Hi! I'm ", "Xushnud 👋"],
   "subtitle": "Aspiring Full-Stack Developer & Software Craftsman",
@@ -125,6 +139,57 @@ const terminal: terminalData = {
     "location": "Tashkent, UZ"
   }
 }
+
+const statistic: StatisticData[] = [
+  {
+    "title": "EXP TIMELINE",
+    "icon": {
+      "name": <GoRocket />,
+      "color": "text-emerald-400"
+    },
+    "data": "2025+",
+    "caption": {
+      "name": "Coding Odyssey",
+      "color": "text-blue-400"
+    }
+  },
+  {
+    "title": "ARSENAL",
+    "icon": {
+      "name": <MdOutlineLayers />,
+      "color": "text-blue-400"
+    },
+    "data": "15+",
+    "caption": {
+      "name": "Tech Stack Tools",
+      "color": "text-blue-400"
+    }
+  },
+  {
+    "title": "COMMITMENT",
+    "icon": {
+      "name": <HiOutlineLightningBolt />,
+      "color": "text-violet-300"
+    },
+    "data": "100%",
+    "caption": {
+      "name": "Passion & Drive",
+      "color": "text-violet-300"
+    }
+  },
+  {
+    "title": "QUALITY RULE",
+    "icon": {
+      "name": <MdOutlineVerified />,
+      "color": "text-emerald-400"
+    },
+    "data": "Clean",
+    "caption": {
+      "name": "Architecture First",
+      "color": "text-emerald-400"
+    }
+  }
+]
 
 const banner_footer: BannerFooterData = {
   "title": {"icon": <MdSensors />, "name": "SYSTEM TELEMETRY"},
@@ -537,6 +602,45 @@ function Terminal() {
   )
 }
 
+function Statistics() {
+  return (
+    <div
+      className="
+        w-full
+        flex gap-2 justify-center items-center flex-wrap
+      "
+    >
+      {statistic.map((el, i) => (
+        <div
+          key={i}
+          className="
+            w-[48%] p-3 rounded-md
+            duration-300
+            bg-slate-800 hover:bg-slate-700
+          "
+        >
+          <div className="w-full flex justify-between">
+            <span
+              className="
+                text-xs
+              "
+            >
+              {el.title}
+            </span>
+            <span className={el.icon.color}>
+              {el.icon.name}
+            </span>
+          </div>
+          <div className="my-2 w-full flex flex-col">
+            <span className="text-2xl text-white font-bold">{el.data}</span>
+            <span className={`text-xs ${el.caption.color}`}>{el.caption.name}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function BannerFooter() {
   return (
     <div
@@ -610,6 +714,7 @@ function Banner() {
         </div>
         <div className={`lg:w-4/10 ${style}`}>
           <Terminal />
+          <Statistics />
         </div>
       </div>
       <div>
