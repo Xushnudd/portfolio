@@ -814,12 +814,17 @@ function AboutTitle() {
         <h2 className="my-2 text-4xl text-white font-bold">{about_data.title}</h2>
         <p className="text-lg">{about_data.text}</p>
       </div>
-      <div className="my-10 w-full flex justify-between">
+      <div
+        className="
+          my-10 w-full
+          flex justify-between flex-wrap
+        "
+        >
         {about_data.info_card.map((el, i) => (
           <div
             key={i}
             className={`
-              w-[32%] p-5 bg-slate-800 rounded-md
+              m-2.5 max-w-[30%] min-w-80 p-5 bg-slate-800 rounded-md
               flex flex-col justify-between gap-5
               group relative overflow-hidden
             `}
