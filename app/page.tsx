@@ -59,7 +59,7 @@ interface terminalData {
   runtime: terminalRuntimeData
 }
 
-const banner: BannerData = {
+const banner_title: BannerData = {
   "title": ["Hi! I'm ", "Xushnud 👋"],
   "subtitle": "Aspiring Full-Stack Developer & Software Craftsman",
   "text": "Synthesizing reactive client-side experiences with high-throughput backend nodes. Transforming technical specifications into resilient software infrastructure."
@@ -127,11 +127,11 @@ function Info() {
   )
 }
 
-function Banner() {
+function BannerTitle() {
   return (
     <div>
       <div className="text-5xl font-bold">
-        {banner.title.map((el: string, i: number) => (
+        {banner_title.title.map((el: string, i: number) => (
           <span
             key={i}
             className={
@@ -148,10 +148,10 @@ function Banner() {
         ))}
       </div>
       <div className="text-sky-300 text-xl leading-10">
-        {banner.subtitle}
+        {banner_title.subtitle}
       </div>
       <div className="text-sm">
-        {banner.text}
+        {banner_title.text}
       </div>
     </div>
   )
@@ -495,24 +495,34 @@ function Terminal() {
   )
 }
 
-export default function Home() {
+function Banner() {
   const style = "w-full py-10 flex flex-col gap-10";
   return (
-    <main
-      className="
-        w-full p-3
-        lg:flex justify-between gap-10
-      "
-    >
-      <div className={`lg:w-6/10 ${style}`}>
-        <Info />
-        <Banner />
-        <SystemLog />
-        <Buttons />
+    <div>
+      <div
+        className="
+          w-full p-3
+          lg:flex justify-between gap-10
+        "
+      >
+        <div className={`lg:w-6/10 ${style}`}>
+          <Info />
+          <BannerTitle />
+          <SystemLog />
+          <Buttons />
+        </div>
+        <div className={`lg:w-4/10 ${style}`}>
+          <Terminal />
+        </div>
       </div>
-      <div className={`lg:w-4/10 ${style}`}>
-        <Terminal />
-      </div>
+    </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <main>
+      <Banner />
     </main>
   );
 }
