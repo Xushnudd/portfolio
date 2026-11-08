@@ -55,6 +55,7 @@ export default function Header() {
         sticky top-0 z-50
         bg-slate-950/70
         border-b border-gray-900
+        backdrop-blur-sm
         "
     >
       <div

@@ -1,6 +1,6 @@
 import { FiTerminal } from "react-icons/fi";
 import { LuFolderCode } from "react-icons/lu";
-import { MdCellTower, MdOutlineLayers, MdOutlineVerified, MdSensors } from "react-icons/md";
+import { MdCellTower, MdOutlineAccountTree, MdOutlineHub, MdOutlineLayers, MdOutlineVerified, MdSensors } from "react-icons/md";
 import PulseDot from "./_components/PulseDot";
 import { ReactNode } from "react";
 import Circle from "./_components/Circle";
@@ -8,9 +8,11 @@ import { FaDollarSign, FaRegCheckCircle } from "react-icons/fa";
 import Link from "next/link";
 import { GoRocket } from "react-icons/go";
 import { HiOutlineLightningBolt } from "react-icons/hi";
+import { IoCodeSharp } from "react-icons/io5";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 interface BannerData {
-  title: string[];
+  title: string | string[];
   subtitle: string;
   text: string;
 }
@@ -93,6 +95,19 @@ interface StatisticData {
   icon: StatisticStyleData;
   data: string;
   caption: StatisticStyleData;
+}
+
+interface WorkspaceData extends BannerData {
+  footer: string | string[]; 
+}
+
+interface InfoCardData extends WorkspaceData {
+  icon: ReactNode;
+}
+
+interface AboutData extends BannerData {
+  info_card: InfoCardData[];
+  workspace: WorkspaceData;
 }
 
 const banner_title: BannerData = {
@@ -211,6 +226,48 @@ const banner_footer: BannerFooterData = {
   ]
 }
 
+const about_data: AboutData = {
+  "subtitle": "CORE OPERATING VALUES",
+  "title": "Engineering Philosophy & Ethos",
+  "text": "Code is not simply instructions executed by silicon; it is a shared knowledge graph crafted for long-term maintainability, security, and computational efficiency.",
+  "info_card": [
+    {
+      "icon": <IoCodeSharp />,
+      "subtitle": "PRINCIPLE 01",
+      "title": "Readability & Clean Syntax",
+      "text": "Code is written for humans first and machines second. Every function possesses a single unmistakable responsibility with self-documenting naming conventions, explicit interfaces, and zero cryptic abbreviations.",
+      "footer": "MODULARITY: HIGHEST"
+    },
+    {
+      "icon": <MdOutlineHub />,
+      "subtitle": "PRINCIPLE 02",
+      "title": "DRY & Anti-Duplication",
+      "text": "Engineering high-reusability component systems without leaking mutable state. Abstracting repetitive patterns into immutable utility primitives, eliminating redundant code paths, and preserving a unified single source of truth.",
+      "footer": "REUSABILITY: ATOMIC"
+    },
+    {
+      "icon": <MdOutlineAccountTree />,
+      "subtitle": "PRINCIPLE 03",
+      "title": "Organized Architecture",
+      "text": "Decoupled client state layers, clear separation of concerns, and resilient data serialization models. Designing application boundaries so components scale independently without cascading architectural failures.",
+      "footer": "RESILIENCE: OPTIMIZED"
+    }
+  ],
+  "workspace": {
+    "subtitle": "WORKSPACE ECOSYSTEM",
+    "title": "Constructed For Flow & Speed",
+    "text": "My daily driver environment pairs lightweight Unix shell workflows, strict linting suites, typed schema validation, and rapid hot-reloading tooling for lightning-fast feedback cycles.",
+    "footer": [
+      "TypeScript 5.x",
+      "React 19 / Next",
+      "Tailwind CSS",
+      "Python / FastAPI",
+      "PostgreSQL",
+      "Git Versioning"
+    ]
+  }
+}
+
 function Info() {
   return (
     <div 
@@ -238,21 +295,22 @@ function BannerTitle() {
   return (
     <div>
       <div className="text-5xl font-bold">
-        {banner_title.title.map((el: string, i: number) => (
-          <span
-            key={i}
-            className={
-              `${
-                  i == 0
-                    ? "text-white"
-                    : "text-emerald-500"
-                }
-              `
-            }
-          >
-            {el}
-          </span>
-        ))}
+        {Array.isArray(banner_title.title) ? (
+          banner_title.title.map((el, i) => (
+            <span
+              key={i}
+              className={
+                i === 0
+                ? "text-white"
+                : "text-emerald-500"
+              }
+            >
+              {el}
+            </span>
+          ))
+        ) : (
+          <span></span>
+        )}
       </div>
       <div className="text-sky-300 text-xl leading-10">
         {banner_title.subtitle}
@@ -724,10 +782,120 @@ function Banner() {
   )
 }
 
+function About() {
+  const colors = [
+    {
+      "text": "text-emerald-400",
+      "gr_text": "group-hover:text-emerald-400",
+      "gr_bg": "group-hover:bg-emerald-400",
+      "bg": "bg-emerald-800"
+    },
+    {
+      "text": "text-blue-400",
+      "gr_text": "group-hover:text-blue-400",
+      "gr_bg": "group-hover:bg-blue-400",
+      "bg": "bg-blue-800"
+    },
+    {
+      "text": "text-violet-400",
+      "gr_text": "group-hover:text-violet-400",
+      "gr_bg": "group-hover:bg-violet-400",
+      "bg": "bg-violet-800"
+    }
+  ]
+  return (
+    <div className="my-10">
+      <div className="w-2/3">
+        <div className="flex items-center gap-2 text-xs">
+          <div className="w-2.5 h-2.5 bg-emerald-400"></div>
+          <span className="text-emerald-400">{about_data.subtitle}</span>
+        </div>
+        <h2 className="my-2 text-4xl text-white font-bold">{about_data.title}</h2>
+        <p className="text-lg">{about_data.text}</p>
+      </div>
+      <div className="my-10 w-full flex justify-between">
+        {about_data.info_card.map((el, i) => (
+          <div
+            key={i}
+            className={`
+              w-[32%] p-5 bg-slate-800 rounded-md
+              flex flex-col justify-between gap-5
+              group relative overflow-hidden
+            `}
+            >
+            <div
+              className={`
+                w-max h-auto p-3 rounded-md
+                duration-300
+                bg-slate-700
+                ${colors[i].gr_bg}
+              `}
+              >
+              <span
+                className={`
+                  text-2xl duration-500
+                  group-hover:text-black ${colors[i].text}
+                `}
+                >
+                {el.icon}
+              </span>
+            </div>
+            <div>
+              <div
+                className={`
+                  text-xs ${colors[i].text}
+                  font-bold
+                `}
+                >
+                {el.subtitle}
+              </div>
+              <div className={`
+                text-white text-xl
+                duration-500
+                ${colors[i].gr_text}
+                `}
+                >
+                {el.title}
+              </div>
+            </div>
+            <p className="text-sm">
+              {el.text}
+            </p>
+            <div className="text-sm">
+              {el.footer}
+            </div>
+            <div>
+              <div
+                className={`
+                  absolute -bottom-10 -right-10
+                  ${colors[i].text} ${colors[i].bg}
+                  w-30 h-30 rounded-full
+                  blur-2xl duration-500
+                  group-hover:w-40 group-hover:h-40
+                `}
+                >
+              </div>
+              <FaArrowRightLong
+                className={`
+                  ${colors[i].text}
+                  duration-500
+                  absolute bottom-5 right-7
+                  group-hover:right-6
+                `}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <main className="w-full p-3">
       <Banner />
+      <About />
     </main>
   );
 }
