@@ -134,12 +134,12 @@ const banner_footer: BannerFooterData = {
   ],
   "system": [
     {
-      "icon": <Circle size={3} color="bg-emerald-400" />,
+      "icon": <Circle size={10} color="bg-emerald-400" />,
       "name": "NODE ENGINE",
       "data": "22.x LTS"
     },
     {
-      "icon": <Circle size={3} color="bg-blue-400" />,
+      "icon": <Circle size={10} color="bg-blue-400" />,
       "name": "TEST COVERAGE",
       "data": "STRICT"
     }
@@ -539,7 +539,56 @@ function Terminal() {
 
 function BannerFooter() {
   return (
-    <div></div>
+    <div
+      className="
+        w-full p-5 rounded-md
+        bg-slate-950
+        flex flex-wrap items-center
+        text-sm
+      "
+    >
+      <div
+        className="
+          w-max pr-4 mr-4
+          border-r border-gray-600
+          flex items-center gap-2 flex-wrap
+          text-emerald-400
+        "
+      >
+        <span>{banner_footer.title.icon}</span>
+        <span>{banner_footer.title.name}</span>
+      </div>
+      <div className="w-max flex gap-10 flex-wrap">
+        <div
+          className="
+            w-max
+            flex gap-2 flex-wrap
+          "
+        >
+          {banner_footer.datas.map((el, i) => (
+            <div key={i}>
+              <span>{el.name}</span>
+              <span className="mr-1">:</span>
+              <span>{el.data}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex gap-3">
+          {banner_footer.system.map((el, i) => (
+            <div
+              key={i}
+              className="
+                flex items-center flex-wrap gap-1.5
+              "
+            >
+              <span>{el.icon}</span>
+              <span>{el.name}</span>
+              <span>{el.data}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   )
 }
 
