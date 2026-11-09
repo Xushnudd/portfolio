@@ -1139,7 +1139,7 @@ function Navigate() {
 
 export default function Home() {
   return (
-    <main className="w-full p-3">
+    <main>
       <Banner />
       <About />
       <Navigate />
