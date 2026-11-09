@@ -1,5 +1,9 @@
+import SkillsBanner from "./_components/SkillsBanner";
+
 export default function Skills() {
   return (
-    <main></main>
+    <main>
+      <SkillsBanner />
+    </main>
   )
 }
