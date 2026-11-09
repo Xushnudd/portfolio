@@ -1,16 +1,23 @@
 import { FiTerminal } from "react-icons/fi";
 import { LuFolderCode } from "react-icons/lu";
-import { MdCellTower, MdOutlineAccountTree, MdOutlineHub, MdOutlineLayers, MdOutlineVerified, MdSensors } from "react-icons/md";
+import { MdCellTower, MdConstruction, MdDataObject, MdOutlineAccountTree, MdOutlineContactSupport, MdOutlineHub, MdOutlineLayers, MdOutlineVerified, MdSensors } from "react-icons/md";
 import PulseDot from "./_components/PulseDot";
 import { ReactNode } from "react";
 import Circle from "./_components/Circle";
-import { FaDollarSign, FaRegCheckCircle } from "react-icons/fa";
+import { FaArrowRight, FaDollarSign, FaRegCheckCircle } from "react-icons/fa";
 import Link from "next/link";
 import { GoRocket } from "react-icons/go";
 import { HiOutlineLightningBolt } from "react-icons/hi";
 import { IoCodeSharp } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Rectangle from "./_components/Rectangle";
+
+interface ColorsData {
+  text: string;
+  gr_text: string;
+  gr_bg: string;
+  bg: string;
+}
 
 interface BannerData {
   title: string | string[];
@@ -110,6 +117,33 @@ interface AboutData extends BannerData {
   info_card: InfoCardData[];
   workspace: WorkspaceData;
 }
+
+interface NavigateData {
+  subtitle: string;
+  data: string;
+  card_data: InfoCardData[];
+}
+
+const colors: ColorsData[] = [
+    {
+      "text": "text-emerald-400",
+      "gr_text": "group-hover:text-emerald-400",
+      "gr_bg": "group-hover:bg-emerald-400",
+      "bg": "bg-emerald-800"
+    },
+    {
+      "text": "text-blue-400",
+      "gr_text": "group-hover:text-blue-400",
+      "gr_bg": "group-hover:bg-blue-400",
+      "bg": "bg-blue-800"
+    },
+    {
+      "text": "text-violet-400",
+      "gr_text": "group-hover:text-violet-400",
+      "gr_bg": "group-hover:bg-violet-400",
+      "bg": "bg-violet-800"
+    }
+  ]
 
 const banner_title: BannerData = {
   "title": ["Hi! I'm ", "Xushnud 👋"],
@@ -267,6 +301,34 @@ const about_data: AboutData = {
       "Git Versioning"
     ]
   }
+}
+
+const navigate_data: NavigateData = {
+  "subtitle": "NAVIGATION ROUTING MATRIX",
+  "data": "SELECT TARGET VECTOR",
+  "card_data": [
+    {
+      "icon": <MdConstruction />,
+      "subtitle": "01 // MATRIX",
+      "title": "TECHNICAL STACK",
+      "text": "Deep dive into programming languages, specialized frameworks, frontend toolchains, and developer environments.",
+      "footer": "INSPECT CAPABILITIES"
+    },
+    {
+      "icon": <MdDataObject />,
+      "subtitle": "02 // CODEBASE",
+      "title": "Public Repositories",
+      "text": "Explore open source initiatives, clean code architectural demos, and live repository mirrors hosted on GitHub @Xushnudd.",
+      "footer": "EXPLORE CODE INDEX"
+    },
+    {
+      "icon": <MdOutlineContactSupport />,
+      "subtitle": "03 // TRANSMISSION",
+      "title": "Direct Contact",
+      "text": "Open a secure connection via Telegram, email dispatch, or schedule an architectural conversation for prospective roles.",
+      "footer": "INITIATE CONTACT"
+    }
+  ]
 }
 
 function Info() {
@@ -784,26 +846,6 @@ function Banner() {
 }
 
 function AboutTitle() {
-  const colors = [
-    {
-      "text": "text-emerald-400",
-      "gr_text": "group-hover:text-emerald-400",
-      "gr_bg": "group-hover:bg-emerald-400",
-      "bg": "bg-emerald-800"
-    },
-    {
-      "text": "text-blue-400",
-      "gr_text": "group-hover:text-blue-400",
-      "gr_bg": "group-hover:bg-blue-400",
-      "bg": "bg-blue-800"
-    },
-    {
-      "text": "text-violet-400",
-      "gr_text": "group-hover:text-violet-400",
-      "gr_bg": "group-hover:bg-violet-400",
-      "bg": "bg-violet-800"
-    }
-  ]
   return (
     <div className="my-10">
       <div className="w-2/3">
@@ -991,11 +1033,121 @@ function About() {
   )
 }
 
+function Navigate() {
+  const
+    num = [1, 0, 2],
+    links = [
+      "/skills",
+      "/repository",
+      "/contact"
+    ]
+  return (
+    <div
+      className="
+        my-10
+      "
+      >
+      <div
+        className="
+          my-5 w-full
+          flex justify-between items-start
+          text-sm
+        "
+        >
+        <div className="flex items-center gap-1">
+          <Rectangle size={10} color="bg-blue-400" />
+          <span className="-mt-0.5 text-blue-400">{navigate_data.subtitle}</span>
+        </div>
+        <span className="text-xs">{navigate_data.data}</span>
+      </div>
+      <div className="flex">
+        {navigate_data.card_data.map((el, i) => (
+          <Link
+            key={i}
+            href={links[i]}
+            className={`
+              w-1/3 p-5 rounded-md
+              bg-slate-800
+              group cursor-pointer
+              overflow-hidden relative
+            `}
+            >
+              <div
+                className="
+                  w-full
+                  flex justify-between items-center
+                "
+                >
+                <div
+                  className={`
+                    w-max h-max p-5 rounded-md
+                    duration-500
+                    ${colors[num[i]].gr_bg}
+                  `}
+                  >
+                  <span
+                    className={`
+                      ${colors[num[i]].text}
+                      duration-500
+                      group-hover:text-black
+                    `}
+                    >
+                    {el.icon}
+                  </span>
+                </div>
+                <div className="text-xs">{el.subtitle}</div>
+              </div>
+              <div className="my-5 w-full flex flex-col gap-5">
+                <h2
+                  className={`
+                    text-lg text-white
+                    duration-500
+                    ${colors[num[i]].gr_text}
+                  `}
+                  >
+                    {el.title}
+                </h2>
+                <p className="text-xs">{el.text}</p>
+                <span
+                  className={`
+                    text-xs
+                    ${colors[num[i]].text}
+                  `}
+                  >
+                  {el.footer}
+                </span>
+              </div>
+              <div
+                className={`
+                  absolute -bottom-10 -right-10
+                  w-30 h-30 rounded-full
+                  blur-2xl duration-500
+                  ${colors[num[i]].bg}
+                  group-hover:w-40 group-hover:h-40
+                `}
+                >
+                </div>
+                <FaArrowRight
+                  className={`
+                    absolute bottom-5 right-7
+                    ${colors[num[i]].text}
+                    duration-500
+                    group-hover:right-5
+                  `}
+                 />
+            </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <main className="w-full p-3">
       <Banner />
       <About />
+      <Navigate />
     </main>
   );
 }
