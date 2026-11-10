@@ -1,0 +1,36 @@
+'use client'
+
+import { useState } from "react";
+
+interface NavButtonData {
+  data: string[];
+}
+
+export default function NavButton({ data }: NavButtonData) {
+  const [navigate, setNavigate] = useState<number>(0);
+
+  return (
+    <div className="flex gap-1.5 flex-wrap">
+      {data.map((el: string, i: number) => (
+        <button
+          key={i}
+          type="button"
+          onClick={() => setNavigate(i)}
+          className={`
+            w-max py-2 px-3
+            font-bold tracking-widest
+            cursor-pointer
+            duration-500
+            ${
+              navigate === i
+              ? "bg-emerald-400 text-black"
+              : "bg-slate-800"
+            }
+          `}
+        >
+          {el}
+        </button>
+      ))}
+    </div>
+  );
+}
