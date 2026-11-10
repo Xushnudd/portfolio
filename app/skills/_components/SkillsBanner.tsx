@@ -80,7 +80,13 @@ export default function SkillsBanner() {
         >
         <span className="text-slate-200">{data.main.subtitle}</span>
         <div className="flex flex-col gap-3">
-          <h2 className="w-2/3 flex flex-wrap text-5xl font-black">
+          <h2
+            className="
+              w-2/3
+              flex flex-wrap
+              text-6xl text-wrap font-black
+            "
+            >
             {data.main.title.map((el:string, i:number) => (
               <span
                 key={i}
