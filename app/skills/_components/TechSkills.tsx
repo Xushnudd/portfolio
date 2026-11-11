@@ -1,3 +1,14 @@
+import { MdLinearScale, MdMemory, MdOutlineApi, MdOutlineLan, MdOutlineQueryStats, MdOutlineSchema, MdOutlineSpeed, MdOutlineVerifiedUser, MdWeb } from "react-icons/md"
+import SkillsCard from "./SkillsCard"
+import { FaTerminal } from "react-icons/fa"
+import { FiDatabase } from "react-icons/fi"
+import { HiOutlineLightningBolt } from "react-icons/hi"
+import PulseRectangle from "@/app/_components/PulseRectangle"
+import { IoMdSync } from "react-icons/io"
+import { RiRobot3Line } from "react-icons/ri"
+import Rectangle from "@/app/_components/Rectangle"
+import { BsBox } from "react-icons/bs"
+
 const data = [
   {
     "subtitle": "CLIENT-SIDE RUNTIME",
@@ -89,8 +100,84 @@ const data = [
   }
 ]
 
+const colors = [
+  {
+    "text": "text-emerald-400",
+    "bg": "bg-emerald-400",
+    "from": "from-emerald-400",
+    "to": "to-emerald-400"
+  },
+  {
+    "text": "text-blue-400",
+    "bg": "bg-blue-400",
+    "from": "from-blue-400",
+    "to": "to-blue-400"
+  },
+  {
+    "text": "text-violet-400",
+    "bg": "bg-violet-400",
+    "from": "from-violet-400",
+    "to": "to-violet-400"
+  }
+]
+
+const icons = [
+  <MdWeb key="web" />,
+  <FaTerminal key="terminal" />,
+  <FiDatabase key="database" />,
+  <MdOutlineLan key="lan" />
+]
+
+const cardIcons = [
+  [
+    <HiOutlineLightningBolt key={"bolt"} />,
+    <MdOutlineSpeed key={"speed"} />,
+    <MdMemory key={"memory"} />,
+    <PulseRectangle size={10} color={colors[0].bg} key={"rectangle"} />
+  ],
+  [
+    <MdOutlineApi key={"api"} />,
+    <IoMdSync key={"Sync"} />,
+    <RiRobot3Line key={"Bot"} />,
+    <Rectangle size={7} color={colors[1].bg} key={"rectangle"} />
+  ],
+  [
+    <MdOutlineSchema key={"Schema"} />,
+    <MdOutlineQueryStats key={"stats"} />,
+    <MdOutlineVerifiedUser key={"user"} />,
+    <Rectangle size={7} color={colors[2].bg} key={"rectangle"} />
+  ],
+  [
+    <BsBox key={"deployed_code"} />,
+    <FaTerminal key={"terminal"} />,
+    <MdLinearScale key={"scale"} />,
+    <Rectangle size={7} color={colors[0].bg} key={"rectangle"} />
+  ]
+]
+
 export default function TechSkills() {
   return (
-    <div></div>
+    <div
+      className="
+        w-full
+        flex gap-1/50 flex-wrap
+      "
+      >
+      {data.map((el, i) => (
+        <SkillsCard
+          key={i}
+          icon={icons[i]}
+          subtitle={el.subtitle}
+          mod_id={i}
+          title={el.title}
+          text={el.text}
+          skill_title={el.skills.title}
+          frameworks={el.skills.frameworks}
+          foot_card={el.card}
+          color={colors[i%3]}
+          cardIcon={cardIcons}
+        />
+      ))}
+    </div>
   )
 }
