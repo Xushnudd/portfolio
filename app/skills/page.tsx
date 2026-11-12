@@ -3,7 +3,12 @@ import TechSkills from "./_components/TechSkills";
 
 export default function Skills() {
   return (
-    <main>
+    <main
+      className="
+        w-full
+        flex flex-col gap-10
+      "
+      >
       <SkillsBanner />
       <TechSkills />
     </main>

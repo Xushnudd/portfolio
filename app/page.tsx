@@ -818,7 +818,7 @@ function BannerFooter() {
 }
 
 function Banner() {
-  const style = "w-full py-10 flex flex-col gap-10";
+  const style = "w-full flex flex-col gap-10";
   return (
     <div>
       <div
@@ -1037,11 +1037,7 @@ function Navigate() {
       "/contact"
     ]
   return (
-    <div
-      className="
-        my-10
-      "
-      >
+    <div className="mt-10">
       <div
         className="
           my-5 w-full
