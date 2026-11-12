@@ -47,8 +47,13 @@ export default function SkillsCard(
   }: SkillsCardData
 ) {
   const icons = cardIcon[mod_id] ?? []
+
   return (
-    <div className="m-2 w-full lg:w-24/50 h-max">
+    <div
+      className={`
+        m-2 w-full lg:w-24/50 h-max
+      `}
+      >
       <div
         className={`
           w-full h-1

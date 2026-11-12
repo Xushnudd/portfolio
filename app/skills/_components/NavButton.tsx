@@ -6,8 +6,20 @@ interface NavButtonData {
   data: string[];
 }
 
+const datas = [
+  "all",
+  "Frontend Architecture",
+  "Backend & Bots",
+  "Data & Persistence",
+  "DevOps & Tooling"
+]
+
 export default function NavButton({ data }: NavButtonData) {
   const [navigate, setNavigate] = useState<number>(0);
+
+  const changeHandle= (n: number) => {
+    setNavigate(n)
+  }
 
   return (
     <div className="flex gap-1.5 flex-wrap">
@@ -15,7 +27,7 @@ export default function NavButton({ data }: NavButtonData) {
         <button
           key={i}
           type="button"
-          onClick={() => setNavigate(i)}
+          onClick={() => changeHandle(i)}
           className={`
             w-max py-2 px-3
             font-bold tracking-widest
