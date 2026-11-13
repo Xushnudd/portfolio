@@ -1,4 +1,7 @@
+'use client'
+
 import Rectangle from "@/app/_components/Rectangle";
+import { useSkillStore } from "@/app/_store/useSkillsStore";
 import { ReactNode } from "react"
 
 interface SkillsCardColor {
@@ -47,11 +50,20 @@ export default function SkillsCard(
   }: SkillsCardData
 ) {
   const icons = cardIcon[mod_id] ?? []
+  const { activeCategory } = useSkillStore()
 
   return (
     <div
       className={`
         m-2 w-full lg:w-24/50 h-max
+        ${
+          (
+            activeCategory.toLowerCase() == title.toLowerCase() ||
+            activeCategory.toLowerCase() == "ALL [4 CATEGORIES]".toLowerCase()
+          )
+          ? ""
+          : "hidden"
+        }
       `}
       >
       <div

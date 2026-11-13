@@ -29,7 +29,7 @@ const data = {
     "FRONTEND ARCHITECTURE",
     "BACKEND & BOTS",
     "DATA & PERSISTENCE",
-    "DEVOPS & INFRASTRUCTURE"
+    "DevOps & TOOLING"
   ]
 }
 

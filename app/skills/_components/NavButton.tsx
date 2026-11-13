@@ -1,24 +1,19 @@
 'use client'
 
+import { useSkillStore } from "@/app/_store/useSkillsStore";
 import { useState } from "react";
 
 interface NavButtonData {
   data: string[];
 }
 
-const datas = [
-  "all",
-  "Frontend Architecture",
-  "Backend & Bots",
-  "Data & Persistence",
-  "DevOps & Tooling"
-]
-
 export default function NavButton({ data }: NavButtonData) {
   const [navigate, setNavigate] = useState<number>(0);
+  const { setActiveCategory } = useSkillStore()
 
-  const changeHandle= (n: number) => {
+  const changeHandle = (n: number) => {
     setNavigate(n)
+    setActiveCategory(data[n])
   }
 
   return (
@@ -34,7 +29,7 @@ export default function NavButton({ data }: NavButtonData) {
             cursor-pointer
             duration-500
             ${
-              navigate === i
+              navigate == i
               ? "bg-emerald-400 text-black"
               : "bg-slate-800"
             }
