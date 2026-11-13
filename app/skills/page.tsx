@@ -1,3 +1,4 @@
+import DiciplineManifest from "./_components/DiciplineManifest";
 import SkillsBanner from "./_components/SkillsBanner";
 import TechSkills from "./_components/TechSkills";
 
@@ -11,6 +12,7 @@ export default function Skills() {
       >
       <SkillsBanner />
       <TechSkills />
+      <DiciplineManifest />
     </main>
   )
 }
