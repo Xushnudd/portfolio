@@ -6,6 +6,6 @@ interface SkillState {
 }
 
 export const useSkillStore = create<SkillState>((set) => ({
-  activeCategory: "all",
+  activeCategory: "ALL [4 CATEGORIES]".toLowerCase(),
   setActiveCategory: (category) => set({ activeCategory: category }),
 }));
