@@ -1,5 +1,9 @@
+import LevelBanner from "./_components/LevelBanner";
+
 export default function Repository() {
   return (
-    <main></main>
+    <main>
+      <LevelBanner />
+    </main>
   )
 }
