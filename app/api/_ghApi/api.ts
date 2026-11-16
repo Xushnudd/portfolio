@@ -13,14 +13,14 @@ export async function GetMe() {
   }
 }
 
-export async function Repository() {
+export async function Repository(num: number) {
   const user = await GetMe()
   if (user === "error") return user
 
   const { data } = await octokit.rest.repos.listForUser({
     username: user.login,
     sort: 'updated',
-    per_page: 20
+    per_page: num
   })
   
   return data
