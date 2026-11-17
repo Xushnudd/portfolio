@@ -2,7 +2,7 @@ import { Request } from "@/app/_utils/request";
 import Image from "next/image";
 import Link from "next/link";
 import { GrShare } from "react-icons/gr";
-import { MdOutlineTerminal } from "react-icons/md";
+import { MdContentCopy, MdOutlinePersonAddAlt1, MdOutlineTerminal } from "react-icons/md";
 import LevelBannerCard from "./LevelBannerCard";
 import { IoIosStarOutline } from "react-icons/io";
 
@@ -136,6 +136,31 @@ export default async function LevelBanner() {
             color={colors[i%3]}
           />
         ))}
+      </div>
+      <div className="w-full flex flex-col gap-2">
+        <Link
+          href={res.data.html_url}
+          className="
+            w-full p-1.5
+            bg-emerald-400
+            flex justify-center items-center gap-1
+            text-black text-sm
+            uppercase font-semibold
+          ">
+          <MdOutlinePersonAddAlt1 />
+          <span>Follow on github</span>
+        </Link>
+        <div
+          className="
+            w-full p-2
+            bg-gray-800
+            flex justify-center items-center gap-1
+            text-gray-300 text-sm
+            uppercase font-semibold
+          ">
+          <MdContentCopy />
+          <span>Copy url</span>
+        </div>
       </div>
     </div>
   )
