@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
-import { Repository } from "../_ghApi/api";
+import { GetAllReposCommits, GetConsistencyPercentage, GetStars, Repository } from "../_ghApi/api";
 
 export async function GET() {
-  const data = await Repository(20)
+  const [Commits, stars, consistencyPercent] = await Promise.all([
+    GetAllReposCommits(),
+    GetStars(20),
+    GetConsistencyPercentage()
+  ])
   return NextResponse.json({
-    "data": data,
-    "num": data.length
+    "commits": Commits,
+    "stars": stars.data.length,
+    "consistencyPercent": consistencyPercent
   })
 }
