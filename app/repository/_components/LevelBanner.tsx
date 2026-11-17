@@ -3,20 +3,52 @@ import Image from "next/image";
 import Link from "next/link";
 import { GrShare } from "react-icons/gr";
 import { MdOutlineTerminal } from "react-icons/md";
+import LevelBannerCard from "./LevelBannerCard";
+import { IoIosStarOutline } from "react-icons/io";
 
 const data = {
   "subtitle": "dev architect",
   "level": "level 4",
-  "about": "Async distributed microservices, low-latency bot engines & "
+  "cards": [
+    "Public Repos",
+    "Total Stars",
+    "Annual Commits",
+    "Consistency"
+  ]
 }
 
+const icons = [
+  null,
+  <IoIosStarOutline key={"star"} />,
+  <div key={"action"}>ACT</div>,
+  null
+]
+
+const colors = [
+  {"text": "text-emerald-400", "bg": "bg-emerald-400"},
+  {"text": "text-blue-400", "bg": "bg-blue-400"},
+  {"text": "text-violet-300", "bg": "bg-violet-300"}
+]
+
 export default async function LevelBanner() {
-  const res = await Request("http://localhost:3000/api/me")
+  const [res, repos] = await Promise.all([
+    Request("http://localhost:3000/api/me"),
+    Request("http://localhost:3000/api/repositories")
+  ])
+
+  const repositorysInfo = [
+    res.data.public_repos,
+    repos.stars,
+    repos.commits.totalAllCommits,
+    repos.consistencyPercent + "%"
+  ]
+
   return (
     <div
       className="
         w-full p-5
         bg-gray-900
+        flex flex-col gap-10
       ">
       <div
         className="
@@ -86,11 +118,25 @@ export default async function LevelBanner() {
             </span>
           </Link>
           <div className="text-xs">
-            {data.about}
+            {res.data.bio}
           </div>
         </div>
       </div>
-      <div></div>
+      <div
+        className="
+          flex justify-between gap-2
+        ">
+        {data.cards.map((el, i) => (
+          <LevelBannerCard
+            key={i}
+            subtitle={el}
+            title={repositorysInfo[i]}
+            icon={icons[i]}
+            percent={80}
+            color={colors[i%3]}
+          />
+        ))}
+      </div>
     </div>
   )
 }
