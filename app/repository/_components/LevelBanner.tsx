@@ -37,10 +37,10 @@ export default async function LevelBanner() {
   ])
 
   const repositorysInfo = [
-    res.data.public_repos,
-    repos.stars,
-    repos.commits.totalAllCommits,
-    repos.consistencyPercent + "%"
+    {"name": res.data.public_repos, "percent": 65},
+    {"name": repos.stars, "percent": 95},
+    {"name": repos.commits.totalAllCommits, "percent": 93},
+    {"name": repos.consistencyPercent + "%", "percent": repos.consistencyPercent}
   ]
 
   return (
@@ -130,9 +130,9 @@ export default async function LevelBanner() {
           <LevelBannerCard
             key={i}
             subtitle={el}
-            title={repositorysInfo[i]}
+            title={repositorysInfo[i].name}
             icon={icons[i]}
-            percent={80}
+            percent={repositorysInfo[i].percent}
             color={colors[i%3]}
           />
         ))}
