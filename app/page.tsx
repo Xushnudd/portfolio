@@ -106,7 +106,7 @@ interface StatisticData {
 }
 
 interface WorkspaceData extends BannerData {
-  footer: string | string[]; 
+  footer: string | string[];
 }
 
 interface InfoCardData extends WorkspaceData {
@@ -125,25 +125,25 @@ interface NavigateData {
 }
 
 const colors: ColorsData[] = [
-    {
-      "text": "text-emerald-400",
-      "gr_text": "group-hover:text-emerald-400",
-      "gr_bg": "group-hover:bg-emerald-400",
-      "bg": "bg-emerald-800"
-    },
-    {
-      "text": "text-blue-400",
-      "gr_text": "group-hover:text-blue-400",
-      "gr_bg": "group-hover:bg-blue-400",
-      "bg": "bg-blue-800"
-    },
-    {
-      "text": "text-violet-400",
-      "gr_text": "group-hover:text-violet-400",
-      "gr_bg": "group-hover:bg-violet-400",
-      "bg": "bg-violet-800"
-    }
-  ]
+  {
+    "text": "text-emerald-400",
+    "gr_text": "group-hover:text-emerald-400",
+    "gr_bg": "group-hover:bg-emerald-400",
+    "bg": "bg-emerald-800"
+  },
+  {
+    "text": "text-blue-400",
+    "gr_text": "group-hover:text-blue-400",
+    "gr_bg": "group-hover:bg-blue-400",
+    "bg": "bg-blue-800"
+  },
+  {
+    "text": "text-violet-400",
+    "gr_text": "group-hover:text-violet-400",
+    "gr_bg": "group-hover:bg-violet-400",
+    "bg": "bg-violet-800"
+  }
+]
 
 const banner_title: BannerData = {
   "title": ["Hi! I'm ", "Xushnud 👋"],
@@ -173,18 +173,18 @@ const system_log: SystemLogData = {
 }
 
 const buttons: ButtonData[] = [
-  {"logo": <LuFolderCode />, "name": "Explore repositories", "link": "/repository"},
-  {"logo": <MdCellTower />, "name": "Direct Transmission", "link": "/contact"}
+  { "logo": <LuFolderCode />, "name": "Explore repositories", "link": "/repository" },
+  { "logo": <MdCellTower />, "name": "Direct Transmission", "link": "/contact" }
 ]
 
 const terminal: terminalData = {
   "titlebar": {
     "buttons": ["bg-red-200", "bg-orange-300", "bg-emerald-500"],
-    "name": {"icon": <FiTerminal />, "text": "zsh — node xushnud.runtime.ts"},
+    "name": { "icon": <FiTerminal />, "text": "zsh — node xushnud.runtime.ts" },
     "status": "200 OK"
   },
   "runtime": {
-    "command": {"icon": <FaDollarSign />, "text": "npx tsx runtime/profile.ts --inspect"},
+    "command": { "icon": <FaDollarSign />, "text": "npx tsx runtime/profile.ts --inspect" },
     "focus": ["TypeScript", "React", "Python", "FastAPI"],
     "location": "Tashkent, UZ"
   }
@@ -242,10 +242,10 @@ const statistic: StatisticData[] = [
 ]
 
 const banner_footer: BannerFooterData = {
-  "title": {"icon": <MdSensors />, "name": "SYSTEM TELEMETRY"},
+  "title": { "icon": <MdSensors />, "name": "SYSTEM TELEMETRY" },
   "datas": [
-    {"name": "PIPELINE", "data": "CI/CD INTEGRATED"},
-    {"name": "PARADIGM", "data": "EVENT-DRIVEN & REACTIVE"}
+    { "name": "PIPELINE", "data": "CI/CD INTEGRATED" },
+    { "name": "PARADIGM", "data": "EVENT-DRIVEN & REACTIVE" }
   ],
   "system": [
     {
@@ -333,7 +333,7 @@ const navigate_data: NavigateData = {
 
 function Info() {
   return (
-    <div 
+    <div
       className="
         w-max bg-slate-800 py-1 px-3 rounded-sm
         text-xs font-bold
@@ -364,8 +364,8 @@ function BannerTitle() {
               key={i}
               className={
                 i === 0
-                ? "text-white"
-                : "text-emerald-500"
+                  ? "text-white"
+                  : "text-emerald-500"
               }
             >
               {el}
@@ -429,8 +429,7 @@ function SystemLog() {
               <div
                 key={i}
                 className={`
-                  ${
-                    i == 0
+                  ${i == 0
                     ? "text-white"
                     : "text-sm"
                   }
@@ -456,8 +455,7 @@ function SystemLog() {
                 <span
                   className={`
                     mx-3
-                    ${
-                      system_log.metadata.focus.length-1 == i
+                    ${system_log.metadata.focus.length - 1 == i
                       ? "hidden"
                       : "inline-block"
                     }
@@ -497,11 +495,10 @@ function Buttons() {
               flex items-center gap-2
               uppercase text-sm
               duration-500
-              ${
-                i == 0
-                ? "bg-emerald-500 text-black hover:bg-emerald-300 hover:shadow-emerald-300 hover:shadow-[0_0_20px]"
-                : "bg-slate-800 text-white hover:text-blue-300 hover:bg-slate-600"
-              }
+              ${i == 0
+              ? "bg-emerald-500 text-black hover:bg-emerald-300 hover:shadow-emerald-300 hover:shadow-[0_0_20px]"
+              : "bg-slate-800 text-white hover:text-blue-300 hover:bg-slate-600"
+            }
             `
           }
         >
@@ -595,24 +592,23 @@ function Terminal() {
                 <span className="text-white">focus:</span>
                 <div>
                   [
-                    {terminal.runtime.focus.map((el, i) => (
-                      <span key={i}>
-                        <span className="text-blue-400">&quot;{el}&quot;</span>
-                        <span
-                          className={
-                            `
-                            ${
-                              terminal.runtime.focus.length-1 != i
-                              ? "inline-block"
-                              : "hidden"
-                            }
-                            `
+                  {terminal.runtime.focus.map((el, i) => (
+                    <span key={i}>
+                      <span className="text-blue-400">&quot;{el}&quot;</span>
+                      <span
+                        className={
+                          `
+                            ${terminal.runtime.focus.length - 1 != i
+                            ? "inline-block"
+                            : "hidden"
                           }
-                        >
-                          ,&nbsp;&nbsp;
-                        </span>
+                            `
+                        }
+                      >
+                        ,&nbsp;&nbsp;
                       </span>
-                    ))}
+                    </span>
+                  ))}
                   ],
                 </div>
               </div>
@@ -865,7 +861,7 @@ function AboutTitle() {
               flex flex-col justify-between gap-5
               group relative overflow-hidden
             `}
-            >
+          >
             <div
               className={`
                 w-max h-auto p-3 rounded-md
@@ -873,13 +869,13 @@ function AboutTitle() {
                 bg-slate-700
                 ${colors[i].gr_bg}
               `}
-              >
+            >
               <span
                 className={`
                   text-2xl duration-500
                   group-hover:text-black ${colors[i].text}
                 `}
-                >
+              >
                 {el.icon}
               </span>
             </div>
@@ -889,7 +885,7 @@ function AboutTitle() {
                   text-xs ${colors[i].text}
                   font-bold
                 `}
-                >
+              >
                 {el.subtitle}
               </div>
               <div className={`
@@ -897,7 +893,7 @@ function AboutTitle() {
                 duration-500
                 ${colors[i].gr_text}
                 `}
-                >
+              >
                 {el.title}
               </div>
             </div>
@@ -916,7 +912,7 @@ function AboutTitle() {
                   blur-2xl duration-500
                   group-hover:w-40 group-hover:h-40
                 `}
-                >
+              >
               </div>
               <FaArrowRightLong
                 className={`
@@ -992,7 +988,7 @@ function Workspace() {
         bg-slate-950 rounded-lg
         flex justify-between gap-5 flex-wrap
       "
-      >
+    >
       <div className="lg:w-2/5 flex flex-col gap-3">
         <span className="text-sm text-emerald-400">{about_data.workspace.subtitle}</span>
         <h2 className="text-2xl text-white">{about_data.workspace.title}</h2>
@@ -1008,7 +1004,7 @@ function Workspace() {
                 w-max px-2 py-0.5 rounded-sm
                 bg-slate-800 text-white
               "
-              >
+            >
               {el}
             </div>
           ))}
@@ -1044,7 +1040,7 @@ function Navigate() {
           flex justify-between items-start
           text-sm
         "
-        >
+      >
         <div className="flex items-center gap-1">
           <Rectangle size={10} color="bg-blue-400" />
           <span className="-mt-0.5 text-blue-400">{navigate_data.subtitle}</span>
@@ -1062,71 +1058,71 @@ function Navigate() {
               group cursor-pointer
               overflow-hidden relative
             `}
-            >
-              <div
-                className="
+          >
+            <div
+              className="
                   w-full
                   flex justify-between items-center
                 "
-                >
-                <div
-                  className={`
+            >
+              <div
+                className={`
                     w-max h-max p-5 rounded-md
                     duration-500
                     ${colors[num[i]].gr_bg}
                   `}
-                  >
-                  <span
-                    className={`
+              >
+                <span
+                  className={`
                       ${colors[num[i]].text}
                       duration-500
                       group-hover:text-black
                     `}
-                    >
-                    {el.icon}
-                  </span>
-                </div>
-                <div className="text-xs">{el.subtitle}</div>
+                >
+                  {el.icon}
+                </span>
               </div>
-              <div className="my-5 w-full flex flex-col gap-5">
-                <h2
-                  className={`
+              <div className="text-xs">{el.subtitle}</div>
+            </div>
+            <div className="my-5 w-full flex flex-col gap-5">
+              <h2
+                className={`
                     text-lg text-white
                     duration-500
                     ${colors[num[i]].gr_text}
                   `}
-                  >
-                    {el.title}
-                </h2>
-                <p className="text-xs">{el.text}</p>
-                <span
-                  className={`
+              >
+                {el.title}
+              </h2>
+              <p className="text-xs">{el.text}</p>
+              <span
+                className={`
                     text-xs
                     ${colors[num[i]].text}
                   `}
-                  >
-                  {el.footer}
-                </span>
-              </div>
-              <div
-                className={`
+              >
+                {el.footer}
+              </span>
+            </div>
+            <div
+              className={`
                   absolute -bottom-10 -right-10
                   w-30 h-30 rounded-full
                   blur-2xl duration-500
                   ${colors[num[i]].bg}
                   group-hover:w-40 group-hover:h-40
                 `}
-                >
-                </div>
-                <FaArrowRight
-                  className={`
+            >
+            </div>
+            <FaArrowRight
+              className={`
                     absolute bottom-5 right-7
                     ${colors[num[i]].text}
                     duration-500
                     group-hover:right-5
                   `}
-                 />
-            </Link>
+            />
+          </Link>
         ))}
       </div>
     </div>
