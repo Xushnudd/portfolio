@@ -1,6 +1,7 @@
 import PulseRectangle from "@/app/_components/PulseRectangle";
 import { HiOutlineLightningBolt } from "react-icons/hi";
 import { MdOutlineSensors, MdOutlineShield, MdOutlineSwapCalls, MdOutlineTune } from "react-icons/md";
+import LiveClock from "./LiveClock";
 
 const data = {
   "top": [
@@ -140,7 +141,13 @@ export default function ContactBanner() {
               flex flex-col gap-2
               text-sm
             ">
-            <span>{data.local_card.title}</span>
+            <div className="flex justify-between text-emerald-400">
+              <span>{data.local_card.title}</span>
+              <span className="flex gap-2">
+                <LiveClock />
+                <span>UTC+5</span>
+              </span>
+            </div>
             <div
               className="
                 w-full h-2
@@ -153,6 +160,9 @@ export default function ContactBanner() {
                 ">
               </div>
             </div>
+            <span className="text-right text-xs text-gray-400">
+              {data.local_card.caption}
+            </span>
           </div>
         </div>
       </div>
