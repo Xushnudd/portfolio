@@ -1,7 +1,7 @@
 'use client'
 
 import Rectangle from "@/app/_components/Rectangle";
-import { useSkillStore } from "@/app/_store/useSkillsStore";
+import { useActiveStore } from "@/app/_store/useActiveStore";
 import { ReactNode } from "react"
 
 interface SkillsCardColor {
@@ -50,7 +50,7 @@ export default function SkillsCard(
   }: SkillsCardData
 ) {
   const icons = cardIcon[mod_id] ?? []
-  const { activeCategory } = useSkillStore()
+  const { activeCategory } = useActiveStore()
 
   return (
     <div

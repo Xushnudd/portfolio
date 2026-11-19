@@ -138,3 +138,59 @@ export async function GetConsistencyPercentage(): Promise<number | string> {
     return "error";
   }
 }
+
+export async function GetAllReposWithLanguages() {
+  try {
+    const data = await octokit.graphql<{
+      viewer: {
+        repositories: {
+          nodes: Array<{
+            name: string;
+            languages: {
+              edges: Array<{
+                size: number;
+                node: { name: string };
+              }>;
+            };
+          }>;
+        };
+      };
+    }>(`
+      query {
+        viewer {
+          repositories(first: 50, ownerAffiliations: OWNER, orderBy: {field: UPDATED_AT, direction: DESC}) {
+            nodes {
+              name
+              # Har bir repodagi tillar va ularning hajmi (nodes)
+              languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+                edges {
+                  size # Necha bayt ekanligi
+                  node {
+                    name # Tilning nomi (JavaScript, TypeScript, Python va h.k.)
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `);
+
+    const repos = data.viewer.repositories.nodes.map((repo) => {
+      const languages = repo.languages.edges.map((lang) => ({
+        language: lang.node.name,
+        size: lang.size,
+      }));
+
+      return {
+        repo: repo.name,
+        languages: languages,
+      };
+    });
+
+    return repos;
+  } catch (error) {
+    console.error("GraphQL xatosi:", error);
+    return "error";
+  }
+}

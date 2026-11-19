@@ -1,6 +1,6 @@
 'use client'
 
-import { useSkillStore } from "@/app/_store/useSkillsStore";
+import { useActiveStore } from "@/app/_store/useActiveStore";
 import { useState } from "react";
 
 interface NavButtonData {
@@ -9,7 +9,7 @@ interface NavButtonData {
 
 export default function NavButton({ data }: NavButtonData) {
   const [navigate, setNavigate] = useState<number>(0);
-  const { setActiveCategory } = useSkillStore()
+  const { setActiveCategory } = useActiveStore()
 
   const changeHandle = (n: number) => {
     setNavigate(n)
