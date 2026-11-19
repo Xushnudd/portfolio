@@ -41,7 +41,7 @@ export default function FilterCard() {
       setActiveCategory("ALL")
     }
     loadData()
-  }, [])
+  }, [setActiveCategory])
 
   if (data === null) return ""
   return (
