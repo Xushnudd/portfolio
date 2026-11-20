@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import LevelBanner from "./_components/LevelBanner";
 import FilterCard from "./_components/FilterCard";
+import Repositories from "./_components/Repostories";
 
 export default function Repository() {
   return (
@@ -13,6 +14,7 @@ export default function Repository() {
         <LevelBanner />
       </Suspense>
       <FilterCard />
+      <Repositories />
     </main>
   )
 }
