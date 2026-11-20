@@ -35,6 +35,76 @@ export async function GetStars(num: number) {
   return responce
 }
 
+export async function GetAllReposDetails() {
+  try {
+    const data = await octokit.graphql<{
+      viewer: {
+        repositories: {
+          nodes: Array<{
+            name: string;
+            stargazerCount: number;
+            forkCount: number;
+            languages: {
+              edges: Array<{
+                size: number;
+                node: { name: string };
+              }>;
+            };
+            readme: {
+              text: string | null;
+            } | null;
+          }>;
+        };
+      };
+    }>(`
+      query {
+        viewer {
+          repositories(
+            first: 50
+            ownerAffiliations: OWNER
+            orderBy: { field: UPDATED_AT, direction: DESC }
+          ) {
+            nodes {
+              name
+              stargazerCount
+              forkCount
+              languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
+                edges {
+                  size
+                  node {
+                    name
+                  }
+                }
+              }
+              readme: object(expression: "HEAD:README.md") {
+                ... on Blob {
+                  text
+                }
+              }
+            }
+          }
+        }
+      }
+    `);
+
+    const reposJson = data.viewer.repositories.nodes.map((repo) => ({
+      repo: repo.name,
+      stars: repo.stargazerCount,
+      forks: repo.forkCount,
+      languages: repo.languages.edges.map((lang) => ({
+        language: lang.node.name,
+        size: lang.size,
+      })),
+      readme: repo.readme?.text ?? null,
+    }));
+
+    return reposJson;
+  } catch (error) {
+    console.error("GraphQL xatosi:", error);
+    return "error";
+  }
+}
+
 export async function GetAllReposCommits() {
   try {
     const data = await octokit.graphql<{

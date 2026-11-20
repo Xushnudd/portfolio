@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { GetAllReposCommits, GetAllReposWithLanguages, GetConsistencyPercentage, GetStars, Repository } from "../_ghApi/api";
+import { GetAllReposCommits, GetAllReposDetails, GetAllReposWithLanguages, GetConsistencyPercentage, GetStars, Repository } from "../_ghApi/api";
 
 export async function GET() {
   const [
@@ -7,19 +7,22 @@ export async function GET() {
     stars,
     consistencyPercent,
     repos,
-    reposLanguage
+    reposLanguage,
+    repoDetails
   ] = await Promise.all([
     GetAllReposCommits(),
     GetStars(20),
     GetConsistencyPercentage(),
     Repository(20),
-    GetAllReposWithLanguages()
+    GetAllReposWithLanguages(),
+    GetAllReposDetails()
   ])
   return NextResponse.json({
     "commits": Commits,
     "stars": stars.data.length,
     "consistencyPercent": consistencyPercent,
     "repos": repos,
-    "reposLanguage": reposLanguage
+    "reposLanguage": reposLanguage,
+    "repoDetails": repoDetails
   })
 }
