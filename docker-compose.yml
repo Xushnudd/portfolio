@@ -1,9 +1,10 @@
 services:
-  portfolio:
-    image: node:26-alpine
-    working_dir: /app
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    command: ["npm", "run", "dev", "--", "-H", "0.0.0.0"]
-    volumes:
-      - .:/app:Z
+    env_file:
+      - .env
+    restart: unless-stopped
