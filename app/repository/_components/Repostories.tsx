@@ -47,7 +47,7 @@ export default function Repositories() {
 
   useEffect(() => {
     async function loadData() {
-      const req = await Request("http://localhost:3000/api/repositories")
+      const req = await Request("/api/repositories")
       setData(req)
     }
     loadData()
