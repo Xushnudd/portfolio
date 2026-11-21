@@ -58,6 +58,8 @@ export default function RoutedEmail() {
               w-full p-5
               bg-gray-900
               text-xs
+              duration-300
+              hover:bg-gray-700
             ">
             <div className="w-full flex justify-between">
               {el.subtitle.map((elem, index) => {

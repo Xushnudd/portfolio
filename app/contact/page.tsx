@@ -12,7 +12,7 @@ export default function Contact() {
       <ContactBanner />
       <div
         className="
-          lg:w-1/2 w-full
+          w-full
           flex flex-col gap-5
         ">
         <SocketTelegram />
