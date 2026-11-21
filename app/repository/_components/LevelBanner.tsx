@@ -32,8 +32,8 @@ const colors = [
 
 export default async function LevelBanner() {
   const [res, repos] = await Promise.all([
-    Request(process.env.APP_URL+"api/me"),
-    Request(process.env.APP_URL+"api/repositories")
+    Request(process.env.APP_URL+"/api/me"),
+    Request(process.env.APP_URL+"/api/repositories")
   ])
 
   const repositorysInfo = [
