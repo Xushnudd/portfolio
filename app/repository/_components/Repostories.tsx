@@ -61,82 +61,84 @@ export default function Repositories() {
         w-full
         flex justify-between items-start gap-5 flex-wrap
       ">
-      {data.repoDetails.map((el, i) => (
-        <div
-          key={i}
-          className={`
-            lg:w-[32%] w-[48%] p-5
-            bg-gray-900
-            flex flex-col gap-5
-            ${
-              (
-                activeCategory == "ALL" ||
-                el.languages.some(
-                  (
-                    item: {language: string }) => item.language === activeCategory
-                )
-              )
-              ? ""
-              : "hidden"
-            }
-          `}>
+      {data.repoDetails.map((el, i) => {
+        const repoMeta = data.repos?.[i];
+
+        return (
           <div
-            className="
-              w-full
-              flex justify-between
-            ">
-            <span className="text-2xl text-white">{el.repo}</span>
-            <span
-              className="
-                w-max h-max px-2 py-0.5
-                text-xs bg-gray-800
-              ">
-              {data.repos[i].owner.user_view_type}
-            </span>
-          </div>
-          <p className="text-sm">
-            {getReadmeExcerpt(el.readme, 150)}
-          </p>
-          <div className="flex gap-2 flex-wrap">
-            {el.languages.map((lang: { language: string }, index: number) => (
-              <div
-                key={index}
-                className="
-                  w-max px-2 py-0.5
-                  bg-gray-800
-                  text-xs
-                ">
+            key={i}
+            className={`
+              lg:w-[32%] w-[48%] p-5
+              bg-gray-900
+              flex flex-col gap-5
+              ${
+                (
+                  activeCategory == "ALL" ||
+                  el.languages.some(
+                    (item: { language: string }) => item.language === activeCategory
+                  )
+                )
+                ? ""
+                : "hidden"
+              }
+            `}
+          >
+            <div className="w-full flex justify-between">
+              <span className="text-2xl text-white">{el.repo}</span>
+              {repoMeta?.owner?.user_view_type && (
+                <span className="w-max h-max px-2 py-0.5 text-xs bg-gray-800">
+                  {repoMeta.owner.user_view_type}
+                </span>
+              )}
+            </div>
+
+            <p className="text-sm">
+              {getReadmeExcerpt(el.readme, 150)}
+            </p>
+
+            <div className="flex gap-2 flex-wrap">
+              {el.languages.map((lang: { language: string }, index: number) => (
+                <div
+                  key={index}
+                  className="w-max px-2 py-0.5 bg-gray-800 text-xs"
+                >
                   {lang.language}
+                </div>
+              ))}
+            </div>
+
+            <div className="w-full flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
+                  <MdOutlineStarOutline className="text-blue-400" />
+                  <span>{el.stars}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <MdForkRight className="text-violet-400" />
+                  <span>{el.forks}</span>
+                </div>
               </div>
-            ))}
-          </div>
-          <div className="w-full flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                <MdOutlineStarOutline className="text-blue-400" />
-                <span>{el.stars}</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <MdForkRight className="text-violet-400" />
-                <span>{el.forks}</span>
+
+              <div>
+                {repoMeta?.html_url && (
+                  <Link
+                    href={repoMeta.html_url}
+                    className="
+                      px-3 py-1
+                      uppercase text-sm
+                      bg-gray-800
+                      duration-500
+                      cursor-pointer active:scale-95
+                    "
+                  >
+                    View Repo
+                  </Link>
+                )}
               </div>
             </div>
-            <div>
-              <Link
-                href={data.repos[i].html_url}
-                className="
-                  px-3 py-1
-                  uppercase text-sm
-                  bg-gray-800
-                  duration-500
-                  cursor-pointer active:scale-95
-                ">
-                View Repo
-              </Link>
-            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   )
 }
