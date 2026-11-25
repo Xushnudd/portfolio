@@ -4,7 +4,7 @@ import { ReactNode, useState } from "react";
 import { MdContentCopy } from "react-icons/md";
 
 interface CopyButtonProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   text: string;
 }
