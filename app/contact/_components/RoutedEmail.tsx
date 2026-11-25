@@ -2,6 +2,7 @@ import Link from "next/link"
 import Rectangle from "@/app/_components/Rectangle"
 import { PiCopySimpleLight } from "react-icons/pi"
 import { MdOutgoingMail } from "react-icons/md"
+import CopyButton from "@/app/_components/CopyButton"
 
 const data = {
   "subtitle": [
@@ -99,16 +100,7 @@ export default function RoutedEmail() {
               {el.title}
             </div>
             <div className="w-max flex gap-2">
-              <button
-                className="
-                  w-max px-3 py-1
-                  bg-gray-600
-                  flex items-center gap-1
-                  cursor-pointer
-                ">
-                <PiCopySimpleLight />
-                <span>Copy</span>
-              </button>
+              <CopyButton text={el.title} />
               <Link
                 href={`mailto:${el.title}`}
                 className="

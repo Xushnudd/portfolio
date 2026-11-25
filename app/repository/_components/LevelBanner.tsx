@@ -5,6 +5,7 @@ import { GrShare } from "react-icons/gr";
 import { MdContentCopy, MdOutlinePersonAddAlt1, MdOutlineTerminal } from "react-icons/md";
 import LevelBannerCard from "./LevelBannerCard";
 import { IoIosStarOutline } from "react-icons/io";
+import CopyButton from "@/app/_components/CopyButton";
 
 const data = {
   "subtitle": "dev architect",
@@ -150,7 +151,8 @@ export default async function LevelBanner() {
           <MdOutlinePersonAddAlt1 />
           <span>Follow on github</span>
         </Link>
-        <div
+        <CopyButton
+          text={res.data.html_url}
           className="
             w-full p-2
             bg-gray-800
@@ -158,9 +160,8 @@ export default async function LevelBanner() {
             text-gray-300 text-sm
             uppercase font-semibold
           ">
-          <MdContentCopy />
           <span>Copy url</span>
-        </div>
+        </CopyButton>
       </div>
     </div>
   )

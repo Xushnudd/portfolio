@@ -1,13 +1,15 @@
 'use client'
 
-import { useState } from "react";
-import { PiCopySimpleLight } from "react-icons/pi";
+import { ReactNode, useState } from "react";
+import { MdContentCopy } from "react-icons/md";
 
 interface CopyButtonProps {
+  children: ReactNode;
+  className?: string;
   text: string;
 }
 
-export default function CopyButton({ text }: CopyButtonProps) {
+export default function CopyButton({ children, className = "", text }: CopyButtonProps) {
   const [copied, setCopied] = useState<boolean>(false);
 
   async function handleCopy() {
@@ -19,17 +21,39 @@ export default function CopyButton({ text }: CopyButtonProps) {
       console.error("Copy error");
     }
   }
-  return (
-    <button
-      onClick={handleCopy}
-      className="
-        w-max px-3 py-1
-        bg-gray-600
-        flex items-center gap-1
-        cursor-pointer
-      ">
-      <PiCopySimpleLight />
-      {copied ? "Copied" : "Copy"}
-    </button>
-  )
+  if (children) {
+    return (
+      <button
+        onClick={handleCopy}
+        className={`
+          cursor-pointer
+          flex gap-1 items-center
+          ${className}
+        `}>
+        <MdContentCopy />
+        <div>
+          {
+            copied
+              ? <span className="capitalize">Copied</span>
+              : children
+          }
+          </div>
+      </button>
+    )
+  }
+  else {
+    return (
+      <button
+        onClick={handleCopy}
+        className="
+          w-max px-3 py-1
+          bg-gray-600
+          flex items-center gap-1
+          cursor-pointer
+        ">
+        <MdContentCopy />
+        {copied ? "Copied" : "Copy"}
+      </button>
+    )
+  }
 }
