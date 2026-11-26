@@ -21,7 +21,7 @@ export default function Nav() {
   return (
     <nav
       className="
-        w-max p-1
+        w-max h-10 p-1
         bg-slate-950/60 text-amber-50
         rounded-md
       "
