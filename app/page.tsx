@@ -814,7 +814,7 @@ function BannerFooter() {
 }
 
 function Banner() {
-  const style = "w-full flex flex-col gap-10";
+  const style = "my-10 w-full flex flex-col gap-10";
   return (
     <div>
       <div
