@@ -1,7 +1,7 @@
 'use client'
 
 import { useActiveStore } from "@/app/_store/useActiveStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface NavButtonData {
   data: string[];
@@ -15,6 +15,10 @@ export default function NavButton({ data }: NavButtonData) {
     setNavigate(n)
     setActiveCategory(data[n])
   }
+
+  useEffect(() => {
+    setActiveCategory(data[0])
+  }, [data, setActiveCategory]);
 
   return (
     <div className="flex gap-1.5 flex-wrap">
